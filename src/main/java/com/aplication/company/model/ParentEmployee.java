@@ -21,9 +21,11 @@ public class ParentEmployee implements Serializable {
 	private static final long serialVersionUID = 927903196158164160L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
+
+
 
 	public Long getId() {
 		return id;
@@ -32,9 +34,5 @@ public class ParentEmployee implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
-	
-	
 
 }

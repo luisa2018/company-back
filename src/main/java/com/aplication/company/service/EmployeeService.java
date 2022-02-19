@@ -2,9 +2,9 @@ package com.aplication.company.service;
 
 import java.util.List;
 
-import com.aplication.company.model.Employee;
+import com.aplication.company.model.EntityEmployee;
 
-public interface EmployeeServicie  {
+public interface EmployeeService {
 
 	 /**
      * Save a user
@@ -12,22 +12,20 @@ public interface EmployeeServicie  {
      * @param employee
      * @return the saved employee
      */
-	Employee save(Employee employee);
+	EntityEmployee save(EntityEmployee employee);
 
     /**
      * get list of employees
      * 
      * @return list of employees
      */
-	List<Employee> findAll();
+	List<EntityEmployee> findAll();
 	
 	/**
 	 * delete an employee with received id
 	 * 
 	 * @param id
 	 */
+
 	void deleteEmployee(Long id);
-
-	
-
 }

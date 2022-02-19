@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.aplication.company.model.Employee;
+import com.aplication.company.model.EntityEmployee;
 
 
-public interface EmployeeRepository extends JpaRepository<Employee, Long>{
+public interface EmployeeRepository extends JpaRepository<EntityEmployee, Long>{
 	
 	@SuppressWarnings("unchecked")
-	Employee save(Employee employee);
+	EntityEmployee save(EntityEmployee employee);
 	
-	List<Employee> findAll();
+	List<EntityEmployee> findAll();
 	
 
 }
