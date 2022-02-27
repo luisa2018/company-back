@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class EmployeeController {
 
 	@Autowired
-	protected EmployeeService employeService;
+	protected EmployeeService employeeService;
 	protected ObjectMapper mapper;
 
 	@RequestMapping(value = "/saveOrUpdate", method = RequestMethod.POST)
@@ -35,7 +35,7 @@ public class EmployeeController {
 			return new RestResponse(HttpStatus.NOT_ACCEPTABLE.value(),
 					"Required fields are not filled out");
 		}
-		this.employeService.save(employee);
+		this.employeeService.save(employee);
 		System.out.println("Exito metodo seva 2");
 		return new RestResponse(HttpStatus.OK.value(), "Successful operation");
 
@@ -44,7 +44,7 @@ public class EmployeeController {
 	@RequestMapping(value = "/getEmployee", method = RequestMethod.GET)
 	public List<EntityEmployee> getEmployee() {
 		System.out.println("getemployee ingreso");
-		return this.employeService.findAll();
+		return this.employeeService.findAll();
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
@@ -56,7 +56,7 @@ public class EmployeeController {
 		if (employee.getId() == null) {
 			throw new Exception("El id esta nulo");
 		}
-		this.employeService.deleteEmployee(employee.getId());
+		this.employeeService.deleteEmployee(employee.getId());
 	}
 
 	private boolean validate(EntityEmployee employee) {

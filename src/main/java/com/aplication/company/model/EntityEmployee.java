@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-@JsonIgnoreProperties
 @Entity
 @Table(name = "employee")
 @Access(AccessType.FIELD)
@@ -18,13 +17,13 @@ public class EntityEmployee {
 	@Column(name ="firstName", nullable = false , length = 30)
 	private String employeeFirstName;
 
-	@Column(name ="secondName", nullable = false, length = 30)
+	@Column(name ="secondName", length = 30)
 	private String employeeSecondName;
 
 	@Column(name ="firstSurname", nullable = false, length = 30)
 	private String employeeFirstSurname;
 
-	@Column(name ="secondSurname", nullable = false, length = 30)
+	@Column(name ="secondSurname", length = 30)
 	private String employeeSecondSurname;
 	
 	@Column(name ="jobPosition", nullable = false, length = 30)
@@ -33,16 +32,15 @@ public class EntityEmployee {
 	@Column(name ="salary", nullable = false, length = 30)
 	private String employeeSalary;
 	
-	@Column(name ="phone", nullable = false, length = 30)
+	@Column(name ="phone", length = 30)
 	private String employeePhone;
 
 	@Column(name ="managerId")
-	private Long managerId;
+	private String employeeManagerId;
 
-
-	@OneToOne (cascade = CascadeType.ALL)
-	@JoinColumn(name="managerId", insertable = false, updatable = false)
-	private  EntityEmployee entityEmployee ;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="managerId", insertable=false, updatable=false)
+	private EntityEmployee entityEmployee;
 
 
 	/**
@@ -215,49 +213,24 @@ public class EntityEmployee {
 		this.employeePhone = employeePhone;
 	}
 
+
 	/**
 	 * get field @Column(name ="managerId")
 	 *
-	 * @return managerId @Column(name ="managerId")
+	 * @return employeeManagerId @Column(name ="managerId")
 
 	 */
-	public Long getManagerId() {
-		return this.managerId;
+	public String getEmployeeManagerId() {
+		return this.employeeManagerId;
 	}
 
 	/**
 	 * set field @Column(name ="managerId")
 	 *
-	 * @param managerId @Column(name ="managerId")
+	 * @param employeeManagerId @Column(name ="managerId")
 
 	 */
-	public void setManagerId(Long managerId) {
-		this.managerId = managerId;
-	}
-
-	/**
-	 * get field @OneToOne (cascade = CascadeType.ALL)
-	 @JoinColumn(name="managerId", insertable = false, updatable = false)
-
-	  *
-	  * @return entityEmployee @OneToOne (cascade = CascadeType.ALL)
-	 @JoinColumn(name="managerId", insertable = false, updatable = false)
-
-	 */
-	public EntityEmployee getEntityEmployee() {
-		return this.entityEmployee;
-	}
-
-	/**
-	 * set field @OneToOne (cascade = CascadeType.ALL)
-	 @JoinColumn(name="managerId", insertable = false, updatable = false)
-
-	  *
-	  * @param entityEmployee @OneToOne (cascade = CascadeType.ALL)
-	 @JoinColumn(name="managerId", insertable = false, updatable = false)
-
-	 */
-	public void setEntityEmployee(EntityEmployee entityEmployee) {
-		this.entityEmployee = entityEmployee;
+	public void setEmployeeManagerId(String employeeManagerId) {
+		this.employeeManagerId = employeeManagerId;
 	}
 }
